@@ -6,10 +6,15 @@ class PostsController < ApplicationController
     json_response(@posts)
   end
 
+  def show
+    @post = Post.find(params[:id])
+    json_response(@post)
+  end
+
   def create
-    @board = Board.find(params[:board_id])
+    # @board = Board.find(params[:board_id])
     @post = Post.create!(post_params)
-    json_response(@board, @post, :created)
+    json_response(@post, :created)
   end
 
   def update
@@ -34,6 +39,6 @@ class PostsController < ApplicationController
 
   private 
     def post_params
-      params.permit(:title, :body)
+      params.permit(:title, :body, :board_id)
     end
 end

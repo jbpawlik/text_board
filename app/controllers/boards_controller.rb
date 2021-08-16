@@ -1,8 +1,13 @@
 class BoardsController < ApplicationController
 
-  def index #list all groups/boards
+  def index
     @boards = Board.all
     json_response(@boards)
+  end
+
+  def show
+    @board = Board.find(params[:id])
+    json_response(@board)
   end
 
   def create
