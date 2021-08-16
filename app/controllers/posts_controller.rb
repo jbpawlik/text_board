@@ -6,6 +6,11 @@ class PostsController < ApplicationController
     json_response(@posts)
   end
 
+  def search_by_time
+    @posts = Post.timeframe(begin, end)
+    json_response(@posts)
+  end
+
   def show
     @post = Post.find(params[:id])
     json_response(@post)
