@@ -29,7 +29,7 @@ class Seed
         title: Faker::Book.author,
         body: Faker::Movie.quote,
         board_id: Faker::Number.between(from:1, to:3),
-        updated_at: Faker::Time.between(from: DateTime.now, to: DateTime.now + 1, format: :long)
+        updated_at: Faker::Time.between(from: DateTime.now, to: DateTime.now + 22, format: :long)
       )
       # puts "Quote #{i}: Author is #{quote.author} and quotation is '#{quote.content}'."
     end

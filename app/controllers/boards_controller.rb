@@ -5,6 +5,11 @@ class BoardsController < ApplicationController
     json_response(@boards)
   end
 
+  def search_by_time
+    @posts = Post.timeframe(params[:time1], params[:time2])
+    json_response(@posts)
+  end
+
   def show
     @board = Board.find(params[:id])
     json_response(@board)
