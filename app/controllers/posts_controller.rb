@@ -12,18 +12,14 @@ class PostsController < ApplicationController
   end
 
   def create
-    # @board = Board.find(params[:board_id])
     @post = Post.create!(post_params)
     json_response(@post, :created)
   end
 
   def update
-    @board = Board.find(params[:board_id])
     @post = Post.find(params[:id])
-    @post2 = Post.update(post_params)
-    if @post.username === @post2.username && @post.author === @post2.author
-      # @post.update!(post_params)
-      @post = Post.update
+    if ((params[:username] == @post.username) && (params[:author] == @post.author))
+      @post.update!(post_params)
       render status: 200, json: {
         message: "This post has been updated successfully"
       }
