@@ -2,6 +2,8 @@ module Api
   class BoardsController < Api::ApplicationController
     before_action :authenticate_user!
 
+    respond_to :json
+
     def index
       @boards = Board.all
       json_response(@boards)

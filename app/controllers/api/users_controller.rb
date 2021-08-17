@@ -1,6 +1,7 @@
 module Api
   class UsersController < Api::ApplicationController
     skip_before_action :doorkeeper_authorize!, only: %i[create]
+    respond_to :json
 
     def create
       user = User.new(email: user_params[:email], password: user_params[:password])

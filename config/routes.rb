@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   # devise_for :users, :controllers => { :registrations => 'registrations' }
 
-  # root to: 'devise/registrations#new'
+  # root to: 'user#index'
 
   devise_scope :user do
     root to: 'devise/registrations#new'
