@@ -14,7 +14,7 @@ describe "update a board route", :type => :request do
 
   
   it 'returns the board name' do
-    put '/boards/@board.id', params: {:name => 'I Hate Chuck Testa', :id => @board.id}
+    put "@board.id"', params: {:name => 'I Hate Chuck Testa', :id => @board.id}
     expect(JSON.parse(response.body)['name']).to eq('I Hate Chuck Testa')
   end
 
