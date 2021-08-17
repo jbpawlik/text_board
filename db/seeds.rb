@@ -6,6 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+if Doorkeeper::Application.count.zero?
+  Doorkeeper::Application.create(name: "iOS client", redirect_uri: "", scopes: "")
+  Doorkeeper::Application.create(name: "Android client", redirect_uri: "", scopes: "")
+  Doorkeeper::Application.create(name: "React", redirect_uri: "", scopes: "")
+end
 
 class Seed
 
@@ -28,6 +33,8 @@ class Seed
       post = Post.create!(
         title: Faker::Book.author,
         body: Faker::Movie.quote,
+        author: Faker::Name.first_name,
+        username: Faker::Book.author,
         board_id: Faker::Number.between(from:1, to:3),
         updated_at: Faker::Time.between(from: DateTime.now, to: DateTime.now + 22, format: :long)
       )
