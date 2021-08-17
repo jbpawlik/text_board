@@ -28,6 +28,8 @@ class Seed
       post = Post.create!(
         title: Faker::Book.author,
         body: Faker::Movie.quote,
+        username: Faker::Name.first_name,
+        author: Faker::Name.name,
         board_id: Faker::Number.between(from:1, to:3),
         updated_at: Faker::Time.between(from: DateTime.now, to: DateTime.now + 22, format: :long)
       )
