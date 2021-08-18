@@ -3,10 +3,9 @@ class BoardsController < ApplicationController
   def index
     @boards = Board.all
     if params[:name]
-      binding.pry
       @search_results = Board.search(params[:name])
-      @posts = Post.relative(@search_results.id)
-      json_response(@search_results, @posts)
+      @posts = Post.relative(@search_results[0].id)
+      json_response([@search_results, @posts])
     else
       json_response(@boards)
     end
