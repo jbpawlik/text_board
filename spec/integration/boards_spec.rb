@@ -30,7 +30,7 @@ describe 'Text_Board API' do
 
     get 'Retrieves a board' do
       tags 'Boards', 'Another Tag'
-      produces 'application/json', 'application/xml'
+      produces 'application/json'
       parameter name: :id, in: :path, type: :string
 
       response '200', 'board found' do
@@ -41,12 +41,12 @@ describe 'Text_Board API' do
           },
           required: ['name']
 
-        let(:id) { Board.create(name: 'foo').id.to_i }
+        let(:id) { Board.create!(name: 'foo').id.to_i }
         run_test!
       end
 
       response '404', 'board not found' do
-        let(:id) { {id: 19019019910} }
+        let(:id) { { id: "19019019910" } }
         run_test!
       end
 
