@@ -2,7 +2,14 @@ class BoardsController < ApplicationController
 
   def index
     @boards = Board.all
-    json_response(@boards)
+    if params[:name]
+      binding.pry
+      @search_results = Board.search(params[:name])
+      @posts = Post.relative(@search_results.id)
+      json_response(@search_results, @posts)
+    else
+      json_response(@boards)
+    end
   end
 
   def search_by_time
