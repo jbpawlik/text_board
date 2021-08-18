@@ -18,7 +18,7 @@ class Seed
   def generate_boards
     3.times do |i|
       board = Board.create!(
-        name: Faker::Hipster.words.join(" ")
+        name: Faker::Hipster.word
       )
     end
   end

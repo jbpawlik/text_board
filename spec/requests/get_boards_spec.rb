@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'swagger_helper'
 
 describe "get all boards route", :type => :request do
   let!(:boards) { FactoryBot.create_list(:board, 20)}

@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'swagger_helper'
 
 describe "post a board route", :type => :request do
 
