@@ -1,4 +1,11 @@
-class BoardsController < ApplicationController
+class BoardsController < ApplicationController  
+# before_action :only => [:new, :edit, :create, :destroy, :update] do
+#   thing = ApiKey.find(params[:api_key])
+#   redirect_to landings_path unless thing?
+# end
+# localhost:3000/boards?api_key=a complex string
+
+
 
   def index
     @boards = Board.all

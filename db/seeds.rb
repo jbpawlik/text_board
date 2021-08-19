@@ -16,7 +16,7 @@ class Seed
   end
 
   def generate_boards
-    3.times do |i|
+    25.times do |i|
       board = Board.create!(
         name: Faker::Hipster.word
       )
@@ -24,13 +24,13 @@ class Seed
   end
 
   def generate_posts
-    20.times do |i|
+    100.times do |i|
       post = Post.create!(
         title: Faker::Book.author,
         body: Faker::Movie.quote,
         username: Faker::Name.first_name,
         author: Faker::Name.name,
-        board_id: Faker::Number.between(from:1, to:3),
+        board_id: Faker::Number.between(from:1, to: 25),
         updated_at: Faker::Time.between(from: DateTime.now, to: DateTime.now + 22, format: :long)
       )
       # puts "Quote #{i}: Author is #{quote.author} and quotation is '#{quote.content}'."
