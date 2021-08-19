@@ -3,7 +3,11 @@ class ApplicationController < ActionController::API
   include Pundit
   include ActionController::HttpAuthentication::Token::ControllerMethods
 
-  before_action :authenticate
+  # before_action :authenticate
+  
+  before_action :only => [:new, :edit, :create, :destroy, :update] do
+    :authenticate
+  end
 
   private
 
