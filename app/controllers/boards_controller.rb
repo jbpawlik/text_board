@@ -42,6 +42,10 @@ class BoardsController < ApplicationController
     end
   end
 
+  def update_many
+    params[:names]
+  end
+
   def destroy 
     @board = Board.find(params[:id])
     if @board.destroy
