@@ -5,8 +5,6 @@ class BoardsController < ApplicationController
 # end
 # localhost:3000/boards?api_key=a complex string
 
-
-
   def index
     @boards = Board.all
     if params[:name]
@@ -30,6 +28,18 @@ class BoardsController < ApplicationController
 
   def create
     @board = Board.create!(board_params)
+    # authorize @board
+
+    json_response(@board, :created)
+  end
+
+  def create_many
+    @board_array = []
+    debugger
+    params[:names].each do |name|
+     board = Board.create!(name)
+     @board.push(board)
+    end
     json_response(@board, :created)
   end
 
@@ -42,9 +52,6 @@ class BoardsController < ApplicationController
     end
   end
 
-  def update_many
-    params[:names]
-  end
 
   def destroy 
     @board = Board.find(params[:id])
